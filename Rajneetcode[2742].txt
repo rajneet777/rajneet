@@ -1,0 +1,125 @@
+import java.util.Random;
+/* rajneet kaur
+ 201905916
+gurpreet singh 201906317
+manpreet kaur 201904363
+jaspreet kaur 201905925
+ramneet kaur pandher 201904532
+*/
+public class TheJungle{
+
+	public static void main(String [] args){
+		System.out.println("Run Application");
+		TheCompetition obj= new TheCompetition();
+		for(int i=0;i<10;i++)
+		{
+		 obj.Run();
+		obj.Competetion();
+		obj.ReportOnWinner();
+		
+		}
+
+}
+
+}
+
+class TheCompetition{
+// TheCompetition class will be the main organizer Boss Program to run all the work
+// This will be the Supervisor Program
+	static Lion[] lions;
+	static Tiger[] tigers;
+	public static int NumberofLionWinners=0;
+	public static int NumberofTigerWinners=0;
+
+	public void Run(){
+		lions= new Lion[10];
+		tigers= new Tiger[10];
+		
+		for(int i=0;i<10;i++)
+		{
+			lions[i]= new Lion();
+			tigers[i]=new Tiger();
+			
+		}
+	}
+	
+public  void Competetion()
+{
+	NumberofLionWinners=0;
+	NumberofTigerWinners=0;
+	for(int i=0 ;i<10;i++)
+	{
+		if(lions[i].getStrength()>tigers[i].getStrength())
+		{
+			TheCompetition.NumberofLionWinners++;
+		}
+		else
+		{
+			TheCompetition.NumberofTigerWinners++;
+		}
+		if(NumberofLionWinners> NumberofTigerWinners)
+		{
+			int num=NumberofLionWinners;
+			int num1=NumberofTigerWinners;
+			NumberofLionWinners= num;
+			NumberofTigerWinners=num1;
+			
+		}
+		if(NumberofLionWinners== NumberofTigerWinners)
+		{
+			NumberofLionWinners-= 2 ;
+			NumberofTigerWinners+=2;
+		}
+	}
+}
+public void ReportOnWinner()
+{
+	System.out.println("LIONS :" + TheCompetition.NumberofLionWinners);
+	System.out.println("TIGER:" + TheCompetition.NumberofTigerWinners);
+	
+}
+
+}
+
+
+class Feline{
+	
+		int catStrength;
+		public Feline(){
+			Random r = new Random();
+			catStrength = r.nextInt(100);
+}
+		public int getStrength()
+		{
+			return this.catStrength;
+		}
+}
+
+
+class Lion extends Feline{
+	public Lion(){
+		super();
+		setStrength();
+		
+	}
+		public void setStrength()
+		{
+			Random rand= new Random();
+			this.catStrength= rand.nextInt(100);
+		}
+		
+}
+
+class Tiger extends Feline{
+	public Tiger(){
+		super();
+		setStrength();
+}
+	public void setStrength()
+	{
+		Random rand= new Random();
+		this.catStrength= rand.nextInt(100);
+	}
+	
+
+}
